@@ -8,11 +8,11 @@ Apache Tomcat 8 with JRE 8 based on official image that uses SLF4J + Logback + l
 
 Run the default Tomcat server:
 
-	docker run -it --rm -p 8080:8080 logcat
+	docker run -it --rm -p 8080:8080 vadyalex/logcat
 
 Mount Tomcat logs directory:
 
-    docker run -it --rm -p 8080:8080 -v /somewhere/logs:/usr/local/tomcat/logs logcat
+    docker run -it --rm -p 8080:8080 -v /somewhere/logs:/usr/local/tomcat/logs vadyalex/logcat
 
 
 Local directory`/somewhere/logs` will contain `tomcat.log` and `tomcat.logstash`.
@@ -42,6 +42,6 @@ output {
 
 You can modify default Logback configuration providing custom `logback.xml` that is located at `/somewhere/logback` directory, run logcat image as follows:
 
-        docker run -it --rm -p 8080:8080 -v /somewhere/logback:/usr/local/tomcat/conf/logback -v /somewhere/logs:/usr/local/tomcat/logs logcat
+        docker run -it --rm -p 8080:8080 -v /somewhere/logback:/usr/local/tomcat/conf/logback -v /somewhere/logs:/usr/local/tomcat/logs vadyalex/logcat
 
 
