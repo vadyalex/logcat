@@ -1,0 +1,30 @@
+<configuration debug="false" scan="true" scanPeriod="60 seconds">
+
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator"/>
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${catalina.base}/logs/tomcat.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${catalina.base}/logs/tomcat-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d %-5level [%thread] [%contextName] %logger{50} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="LOGSTASH-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${catalina.base}/logs/tomcat.logstash</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${catalina.base}/logs/tomcat-%d{yyyy-MM-dd}.logstash</fileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="LOGSTASH-FILE"/>
+    </root>
+
+</configuration>
