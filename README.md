@@ -18,7 +18,7 @@ Mount Tomcat logs directory:
 Local directory`/somewhere/logs` will contain `tomcat.log` and `tomcat.logstash`.
 `tomcat.log` contains logs in human readable form. `tomcat.logstash` contains structured logs in Logstash JSON format that may be directly read by Logstash process:
 
-```json
+```
 input {
 
   file {
